@@ -45,6 +45,7 @@ public class MainActivity extends Activity implements LocationListener,
 
 	DatabaseHandler db = new DatabaseHandler(this);
 	ProgressDialog ringProgressDialog;
+	boolean comeFromSetting;
 
 	// //////////////////// info window adapter class///////////////////////////
 	class MyInfoWindowAdapter implements InfoWindowAdapter {
@@ -109,9 +110,10 @@ public class MainActivity extends Activity implements LocationListener,
 
 	private void updateVenues() {
 		// check if GPS enabled
+		if(comeFromSetting)
 		gps = new GPSTracker(MainActivity.this);
 		if (gps.canGetLocation()) {
-		    gps.getLocation();
+		   // gps.getLocation();
 		    latitude = gps.getLatitude();
 			longitude = gps.getLongitude();
 			if(longitude!=0.0)
@@ -150,6 +152,7 @@ public class MainActivity extends Activity implements LocationListener,
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		comeFromSetting=true;
 		updateVenues();
 	}
 
@@ -344,6 +347,7 @@ public class MainActivity extends Activity implements LocationListener,
 		alertDialog.setNegativeButton("Cancel",
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
+						comeFromSetting=false;
 						dialog.cancel();
 						Toast.makeText(MainActivity.this, "Can Not Get Your Location", Toast.LENGTH_SHORT).show();
 					}
