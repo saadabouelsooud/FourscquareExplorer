@@ -44,7 +44,7 @@ public class JSONParser {
 		// //////////////// load venues get///////////////////////////////////
 		if (method.equalsIgnoreCase("get")) {
 			try {
-
+                System.out.println("venues url = "+url);
 				doHttpGetRequest(url, httpClient);
 
 			} catch (Exception e) {

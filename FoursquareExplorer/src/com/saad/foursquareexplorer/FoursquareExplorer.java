@@ -14,11 +14,15 @@ import com.saad.objects.Checkin;
 import com.saad.objects.VenueData;
 import com.saad.sqLiteDB.DatabaseHandler;
 
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.provider.Settings;
 import android.text.GetChars;
 import android.util.Log;
 import android.widget.Toast;
@@ -201,5 +205,5 @@ public class FoursquareExplorer extends Application {
 		mAllVenuesPhotos.add(bmp);
 		return true;
 	}
-
+	
 }
