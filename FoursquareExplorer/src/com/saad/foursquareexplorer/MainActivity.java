@@ -9,6 +9,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -32,6 +34,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -116,9 +119,10 @@ public class MainActivity extends Activity implements LocationListener,
 			LatLng mUserLatLng = new LatLng(latitude, longitude);
 			map.animateCamera(CameraUpdateFactory.newLatLngZoom(mUserLatLng,
 					12.0f));
+			BitmapDescriptor userImage=BitmapDescriptorFactory.fromResource(R.drawable.user);
 			map.addMarker(new MarkerOptions()
 					.snippet("me")
-					.position(mUserLatLng)
+					.position(mUserLatLng).icon(userImage)
 					.title("Me and my Long = " + longitude + ", my Lat = "
 							+ latitude));
 
@@ -206,9 +210,10 @@ public class MainActivity extends Activity implements LocationListener,
 				LatLng mUserLatLng = new LatLng(latitude, longitude);
 				map.animateCamera(CameraUpdateFactory.newLatLngZoom(
 						mUserLatLng, 12.0f));
+				BitmapDescriptor userImage=BitmapDescriptorFactory.fromResource(R.drawable.user);
 				map.addMarker(new MarkerOptions()
 						.snippet("me")
-						.position(mUserLatLng)
+						.position(mUserLatLng).icon(userImage)
 						.title("Me and my Long = " + longitude + ", my Lat = "
 								+ latitude));
 				for (int i = 0; i < FoursquareExplorer.mAllVenues.size(); i++) {
